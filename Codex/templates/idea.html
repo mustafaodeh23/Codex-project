@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="page-head">
+    <h2>Project Idea Analyzer</h2>
+    <p>Write your idea — Codex returns type, tech stack, difficulty, and roadmap.</p>
+</div>
+
+<div class="tool-card">
+    <form method="POST" onsubmit="return codexLoading('ideaLoading','ideaResult')">
+        <textarea name="idea" placeholder="Write your project idea here..." required>{{ idea_text }}</textarea>
+        <button class="btn primary" type="submit">Analyze</button>
+    </form>
+
+    <div id="ideaLoading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Analyzing idea...</p>
+    </div>
+
+    {% if result %}
+    <div id="ideaResult" class="result-box">
+        <div class="result-row">
+            <span class="pill">Language: {{ result.language_detected }}</span>
+            <span class="pill">Type: {{ result.project_type }}</span>
+            <span class="pill">Difficulty: {{ result.difficulty }}</span>
+            <span class="pill">Score: {{ result.score }}/100</span>
+        </div>
+
+        <h3>Signals</h3>
+        <ul>
+            {% for s in result.signals %}
+            <li>{{ s }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Recommended Stack</h3>
+        <div class="tag-row">
+            {% for t in result.recommended_stack %}
+            <span class="tag">{{ t }}</span>
+            {% endfor %}
+        </div>
+
+        <h3>Roadmap</h3>
+        <ol>
+            {% for step in result.roadmap %}
+            <li>{{ step }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title if title else "Codex" }}</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <nav class="nav">
+        <a class="brand" href="/">CODEX</a>
+        <div class="nav-links">
+            <a href="/languages">Levels</a>
+            <a href="/idea">Idea</a>
+            <a href="/code">Code</a>
+        </div>
+    </nav>
+
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        © Mustafa Odeh – Codex Platform
+    </footer>
+</body>
+</html>
