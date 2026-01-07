@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="page-head">
+    <h2>Code Skill Analyzer</h2>
+    <p>Paste your code, pick language, get score + level + next steps.</p>
+</div>
+
+<div class="tool-card">
+    <form method="POST" onsubmit="return codexLoading('codeLoading','codeResult')">
+        <select name="language" class="select">
+            {% for opt in ["Python","JavaScript","C++","HTML","CSS"] %}
+                <option value="{{ opt }}" {% if language == opt %}selected{% endif %}>{{ opt }}</option>
+            {% endfor %}
+        </select>
+
+        <textarea name="code" placeholder="Paste your code here..." required>{{ code_text }}</textarea>
+        <button class="btn primary" type="submit">Analyze</button>
+    </form>
+
+    <div id="codeLoading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Analyzing code...</p>
+    </div>
+
+    {% if result %}
+    <div id="codeResult" class="result-box">
+        <div class="result-row">
+            <span class="pill">Language: {{ result.language }}</span>
+            <span class="pill">Lines: {{ result.lines }}</span>
+            <span class="pill">Score: {{ result.score }}/100</span>
+            <span class="pill">Level: {{ result.level }}</span>
+        </div>
+
+        <h3>Feedback</h3>
+        <ul>
+            {% for f in result.feedback %}
+            <li>{{ f }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Next Steps</h3>
+        <ol>
+            {% for n in result.next_steps %}
+            <li>{{ n }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

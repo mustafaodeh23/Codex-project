@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="hero">
+    <div class="hero-left">
+        <h1>CODEX</h1>
+        <p>
+            Smart platform to analyze project ideas, evaluate coding skills,
+            and guide your learning path — using a strong logic-based AI (Phase 1).
+        </p>
+
+        <div class="hero-actions">
+            <a class="btn primary" href="/languages">Start Levels</a>
+            <a class="btn ghost" href="/idea">Analyze Idea</a>
+        </div>
+
+        <div class="mini-badges">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python</span><span>C++</span>
+        </div>
+    </div>
+</section>
+
+<section class="cards">
+    <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Skill Levels</h3>
+        <p>Choose a language and follow levels 1→100 with locked stages and quiz gates.</p>
+        <a href="/languages">Explore →</a>
+    </div>
+
+    <div class="card">
+        <div class="card-icon">💡</div>
+        <h3>Idea Analyzer</h3>
+        <p>Get project type, required stack, difficulty, and roadmap to start building.</p>
+        <a href="/idea">Analyze →</a>
+    </div>
+
+    <div class="card">
+        <div class="card-icon">💻</div>
+        <h3>Code Analyzer</h3>
+        <p>Paste your code, get a score, level, feedback, and next steps to improve.</p>
+        <a href="/code">Check →</a>
+    </div>
+</section>
+
+{% endblock %}
