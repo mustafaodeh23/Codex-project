@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="page-head">
+    <h2>Select Language</h2>
+    <p>Pick a roadmap and start leveling up.</p>
+</div>
+
+<div class="lang-grid">
+    {% for lang in languages %}
+    <a class="lang-card" href="/levels/{{ lang.name }}">
+        <div class="lang-icon">{{ lang.icon }}</div>
+        <div class="lang-name">{{ lang.name }}</div>
+        <div class="lang-sub">Roadmap • Levels • Quizzes</div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

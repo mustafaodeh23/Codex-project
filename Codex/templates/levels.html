@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="page-head">
+    <h2>{{ language }} Roadmap</h2>
+    <p>Locked levels open as you progress. Quiz every 20 levels.</p>
+</div>
+
+<div class="levels-grid">
+    {% for l in levels %}
+        {% if l.open %}
+            <div class="level-card open">
+                <div class="level-top">{{ l.num }}</div>
+                <div class="level-mid">📘</div>
+                {% if l.quiz %}
+                    <div class="level-badge">QUIZ</div>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="level-card locked">
+                <div class="level-mid">🔒</div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}
